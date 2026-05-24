@@ -1,0 +1,93 @@
+﻿<Window x:Class="QuanLyTiemNet.Views.DialogKhoiDong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Khởi động máy" SizeToContent="Height" Width="550"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Border Background="{StaticResource BgRoot}" CornerRadius="15" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,30">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🖥️" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock x:Name="txtTieuDe" Text="Khởi động: Máy 04" FontSize="26" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Content="✕" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="Gray" FontSize="20" Cursor="Hand" Click="BtnDong_Click"/>
+            </Grid>
+
+            <UniformGrid Grid.Row="1" Columns="2" Margin="0,0,0,25">
+                <RadioButton x:Name="rdoVangLai" Content="Khách vãng lai" Style="{StaticResource ToggleTabStyle}" IsChecked="True" Checked="LoaiKhach_Checked"/>
+                <RadioButton x:Name="rdoHoiVien" Content="Hội viên" Style="{StaticResource ToggleTabStyle}" Margin="15,0,0,0" Checked="LoaiKhach_Checked"/>
+
+                <StackPanel x:Name="pnlHoiVien" Visibility="Collapsed" Margin="0,15,0,0">
+                    <TextBlock Text="Chọn tài khoản hội viên:" Foreground="{StaticResource TextMuted}" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cboHoiVien" DisplayMemberPath="TenDangNhap" SelectedValuePath="MaTaiKhoan" 
+              SelectionChanged="CboHoiVien_SelectionChanged" Padding="5" Height="30"/>
+
+                    <Border Background="#1f2937" CornerRadius="8" Padding="15" Margin="0,15,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Họ tên:" Foreground="#94a3b8" Margin="0,0,10,5"/>
+                            <TextBlock x:Name="txtTenHoiVien" Grid.Row="0" Grid.Column="1" Text="---" Foreground="White" FontWeight="SemiBold"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Số dư:" Foreground="#94a3b8"/>
+                            <TextBlock x:Name="txtSoDuHoiVien" Grid.Row="1" Grid.Column="1" Text="0 VNĐ" Foreground="#10b981" FontWeight="Bold"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </UniformGrid>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Nạp tiền trước (VNĐ) - Không bắt buộc" Foreground="{StaticResource TextMuted}" Margin="0,0,0,10" FontSize="14"/>
+                <TextBox x:Name="txtSoTien" Background="{StaticResource BgCard}" Foreground="White" 
+                         Padding="15" FontSize="20" FontWeight="Bold" BorderBrush="{StaticResource BorderColor}"
+                         Text="0" VerticalContentAlignment="Center"/>
+
+                <TextBlock Text="Nếu không nạp trước, máy sẽ tính tiền tự động dựa trên thời gian sử dụng thực tế." 
+                           Foreground="{StaticResource TextMuted}" Margin="0,15,0,0" TextWrapping="Wrap" FontStyle="Italic" FontSize="13"/>
+            </StackPanel>
+
+            <Grid Grid.Row="3" Margin="0,20,0,0">
+                <Button Content="🔧 Bảo trì" HorizontalAlignment="Left" Background="Transparent" Foreground="#f59e0b" BorderBrush="#f59e0b" Padding="15,8" Click="BtnBaoTri_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Đóng" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,0,15,0" Padding="20,8" Click="BtnDong_Click"/>
+                    <Button x:Name="btnKhoiDong" Content="Khởi động máy" Background="{StaticResource AccentBlue}" Foreground="White" FontWeight="Bold" Padding="25,10" Click="BtnKhoiDong_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnTatMay" Content="Tắt máy (Tính tiền)" Background="#ef4444" Foreground="White" FontWeight="Bold" Padding="25,10" Click="BtnTatMay_Click" Visibility="Collapsed">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

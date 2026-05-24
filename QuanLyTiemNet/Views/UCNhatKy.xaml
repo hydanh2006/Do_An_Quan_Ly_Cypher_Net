@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="QuanLyTiemNet.Views.UCNhatKy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="NHẬT KÝ GIAO DỊCH" FontSize="24" FontWeight="Bold" Foreground="{StaticResource AccentBlue}" Margin="0,0,0,5"/>
+            <TextBlock Text="Lịch sử thu tiền máy, nạp thẻ và bán dịch vụ." Foreground="{StaticResource TextMuted}" Margin="0,0,0,20"/>
+
+            <Border Background="{StaticResource BgCard}" Height="500" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+                <TextBlock Text="Bảng dữ liệu nhật ký sẽ được Load tại đây" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,68 @@
+﻿<Window x:Class="QuanLyTiemNet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:QuanLyTiemNet.ViewModels"
+        xmlns:v="clr-namespace:QuanLyTiemNet.Views"
+        Title="Cyber NetPro - Admin Control Panel" Height="768" Width="1366"
+        Background="{StaticResource BgRoot}" Foreground="{StaticResource TextMain}"
+        WindowStartupLocation="CenterScreen">
+    
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MayTramViewModel}">
+            <v:UCMayTram />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NhanVienViewModel}">
+            <v:UCNhanVien />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CangTinViewModel}">
+            <v:UCCanTin />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:HoiVienViewModel}">
+            <v:UCHoiVien />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+       
+
+        <Border Grid.Column="0" Background="{StaticResource BgSidebar}" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal"  Margin="0,0,0,10">
+                    <Border Width="46" Height="45" Background="{StaticResource AccentBlue}" CornerRadius="10" Margin="0,0,12,0">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#2563eb" BlurRadius="15" ShadowDepth="0" Opacity="0.5"/>
+                        </Border.Effect>
+                        <TextBlock Text="DTK" Foreground="White" FontWeight="Black" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="CYBER NET" FontWeight="Black" FontSize="16" Foreground="White"/>
+                        <TextBlock Text="ADMIN CONTROL PANEL" FontSize="10" Foreground="{StaticResource AccentBlue}" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <RadioButton Content="🖥️ Sơ đồ máy trạm" Style="{StaticResource MenuButtonStyle}" IsChecked="True" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="MayTram"/>
+                    <RadioButton Content="👔 Quản lý nhân viên" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="NhanVien" Visibility="{Binding HienThiAdmin}"/>
+                    <RadioButton Content="👥 Quản lý hội viên" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="HoiVien"/>
+                    <RadioButton Content="🍔 Căng tin &amp; Đơn hàng" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="CangTin"/>
+                    <RadioButton Content="🕒 Nhật ký giao dịch" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"/>
+                    <RadioButton Content="📊 Báo cáo doanh thu" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="2" Text="23/05/2026 13:18:03" Foreground="{StaticResource TextMuted}" FontFamily="Consolas" TextAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <ContentControl x:Name="MainContent" Grid.Column="1" Margin="30" Content="{Binding CurrentView}"/>
+    </Grid>
+</Window>

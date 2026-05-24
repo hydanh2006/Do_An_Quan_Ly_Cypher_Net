@@ -1,0 +1,24 @@
+﻿<Window x:Class="QuanLyTiemNet.Views.DialogNapTien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nạp Tiền" Height="250" Width="350"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border Background="#0f172a" CornerRadius="12" BorderBrush="#F59E0B" BorderThickness="2" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Margin="20">
+            <StackPanel>
+                <TextBlock Text="NẠP TIỀN GIỜ CHƠI" FontSize="18" FontWeight="Bold" Foreground="#F59E0B" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <TextBlock x:Name="txtTenKhach" Text="Đang nạp cho: [Tên khách]" Foreground="White" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Số tiền nạp (VNĐ):" Foreground="#94a3b8" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtSoTienNap" Height="40" Background="#1e293b" Foreground="White" FontSize="16" FontWeight="Bold" Padding="10,0" VerticalContentAlignment="Center" BorderThickness="0"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Content="Hủy" Width="80" Height="35" Background="#334155" Foreground="White" BorderThickness="0" Margin="0,0,10,0" Click="BtnHuy_Click"/>
+                    <Button Content="Xác nhận Nạp" Width="120" Height="35" Background="#F59E0B" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="BtnNap_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

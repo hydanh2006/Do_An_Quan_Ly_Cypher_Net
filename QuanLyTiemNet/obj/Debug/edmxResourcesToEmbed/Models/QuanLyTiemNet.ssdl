@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyTiemNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietGoiMon">
+    <Key>
+      <PropertyRef Name="MaChiTiet" />
+    </Key>
+    <Property Name="MaChiTiet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaPhien" Type="int" Nullable="false" />
+    <Property Name="MaDichVu" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="GiaBan" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="MaDichVu" />
+    </Key>
+    <Property Name="MaDichVu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDichVu" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PhanLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TonKho" Type="int" />
+  </EntityType>
+  <EntityType Name="LichSuNapTien">
+    <Key>
+      <PropertyRef Name="MaGiaoDich" />
+    </Key>
+    <Property Name="MaGiaoDich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoanKhach" Type="int" Nullable="false" />
+    <Property Name="MaTaiKhoanNhanVien" Type="int" Nullable="false" />
+    <Property Name="SoTienNap" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ThoiGianNap" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MayTram">
+    <Key>
+      <PropertyRef Name="MaMay" />
+    </Key>
+    <Property Name="MaMay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenMay" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TrangThai" Type="int" />
+    <Property Name="GiaMoiGio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="LoaiMay" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNhanVien" />
+    </Key>
+    <Property Name="MaNhanVien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CaLamViec" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MucLuong" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NgayVaoLam" Type="date" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhienChoi">
+    <Key>
+      <PropertyRef Name="MaPhien" />
+    </Key>
+    <Property Name="MaPhien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaMay" Type="int" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="GioBatDau" Type="datetime" />
+    <Property Name="GioKetThuc" Type="datetime" />
+    <Property Name="TienGio" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="MaTaiKhoan" />
+    </Key>
+    <Property Name="MaTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="VaiTro" Type="int" Nullable="false" />
+    <Property Name="SoDu" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ChiTietGo__MaDic__6E01572D">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+    <End Role="ChiTietGoiMon" Type="Self.ChiTietGoiMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="MaDichVu" />
+      </Principal>
+      <Dependent Role="ChiTietGoiMon">
+        <PropertyRef Name="MaDichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGo__MaPhi__6D0D32F4">
+    <End Role="PhienChoi" Type="Self.PhienChoi" Multiplicity="1" />
+    <End Role="ChiTietGoiMon" Type="Self.ChiTietGoiMon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhienChoi">
+        <PropertyRef Name="MaPhien" />
+      </Principal>
+      <Dependent Role="ChiTietGoiMon">
+        <PropertyRef Name="MaPhien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuNap__MaTai__70DDC3D8">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="LichSuNapTien" Type="Self.LichSuNapTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="LichSuNapTien">
+        <PropertyRef Name="MaTaiKhoanKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuNap__MaTai__71D1E811">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="LichSuNapTien" Type="Self.LichSuNapTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="LichSuNapTien">
+        <PropertyRef Name="MaTaiKhoanNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NhanVien__MaTaiK__02FC7413">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhienChoi__MaMay__6477ECF3">
+    <End Role="MayTram" Type="Self.MayTram" Multiplicity="1" />
+    <End Role="PhienChoi" Type="Self.PhienChoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayTram">
+        <PropertyRef Name="MaMay" />
+      </Principal>
+      <Dependent Role="PhienChoi">
+        <PropertyRef Name="MaMay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhienChoi__MaTai__656C112C">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="PhienChoi" Type="Self.PhienChoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Principal>
+      <Dependent Role="PhienChoi">
+        <PropertyRef Name="MaTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyTiemNetModelStoreContainer">
+    <EntitySet Name="ChiTietGoiMon" EntityType="Self.ChiTietGoiMon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LichSuNapTien" EntityType="Self.LichSuNapTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MayTram" EntityType="Self.MayTram" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhienChoi" EntityType="Self.PhienChoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietGo__MaDic__6E01572D" Association="Self.FK__ChiTietGo__MaDic__6E01572D">
+      <End Role="DichVu" EntitySet="DichVu" />
+      <End Role="ChiTietGoiMon" EntitySet="ChiTietGoiMon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGo__MaPhi__6D0D32F4" Association="Self.FK__ChiTietGo__MaPhi__6D0D32F4">
+      <End Role="PhienChoi" EntitySet="PhienChoi" />
+      <End Role="ChiTietGoiMon" EntitySet="ChiTietGoiMon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuNap__MaTai__70DDC3D8" Association="Self.FK__LichSuNap__MaTai__70DDC3D8">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="LichSuNapTien" EntitySet="LichSuNapTien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuNap__MaTai__71D1E811" Association="Self.FK__LichSuNap__MaTai__71D1E811">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="LichSuNapTien" EntitySet="LichSuNapTien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NhanVien__MaTaiK__02FC7413" Association="Self.FK__NhanVien__MaTaiK__02FC7413">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhienChoi__MaMay__6477ECF3" Association="Self.FK__PhienChoi__MaMay__6477ECF3">
+      <End Role="MayTram" EntitySet="MayTram" />
+      <End Role="PhienChoi" EntitySet="PhienChoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhienChoi__MaTai__656C112C" Association="Self.FK__PhienChoi__MaTai__656C112C">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="PhienChoi" EntitySet="PhienChoi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

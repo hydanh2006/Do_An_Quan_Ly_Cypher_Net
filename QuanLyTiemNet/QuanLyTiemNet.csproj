@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +62,113 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Converters\TrangThaiToVisibilityConverter.cs" />
+    <Compile Include="Models\ChiTietGoiMon.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DichVu.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoiVienExtention.cs" />
+    <Compile Include="Models\LichSuNapTien.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MayTram.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MayTramExtention.cs" />
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVienExtention.cs" />
+    <Compile Include="Models\PhienChoi.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhienDangNhap.cs" />
+    <Compile Include="Models\QuanLyTiemNet.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyTiemNet.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyTiemNet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyTiemNet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyTiemNet.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CangTinViewModel.cs" />
+    <Compile Include="ViewModels\HoiVienViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MayTramViewModel.cs" />
+    <Compile Include="ViewModels\NhanVienViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\DialogAddNhanVien.xaml.cs">
+      <DependentUpon>DialogAddNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogDKHoiVien.xaml.cs">
+      <DependentUpon>DialogDKHoiVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogEditNhanVien.xaml.cs">
+      <DependentUpon>DialogEditNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogKhoiDong.xaml.cs">
+      <DependentUpon>DialogKhoiDong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogNapTien.xaml.cs">
+      <DependentUpon>DialogNapTien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCBaoCao.xaml.cs">
+      <DependentUpon>UCBaoCao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCCanTin.xaml.cs">
+      <DependentUpon>UCCanTin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCHoiVien.xaml.cs">
+      <DependentUpon>UCHoiVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCMayTram.xaml.cs">
+      <DependentUpon>UCMayTram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCNhanVien.xaml.cs">
+      <DependentUpon>UCNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCNhatKy.xaml.cs">
+      <DependentUpon>UCNhatKy.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\DialogAddNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogDKHoiVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogEditNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogKhoiDong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogNapTien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +176,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\LoginWindowView.xaml.cs">
+      <DependentUpon>LoginWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UCBaoCao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCCanTin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCHoiVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCMayTram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCNhatKy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +226,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Models\QuanLyTiemNet.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyTiemNet.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\QuanLyTiemNet.edmx.diagram">
+      <DependentUpon>QuanLyTiemNet.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +241,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\QuanLyTiemNet.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>QuanLyTiemNet.Context.cs</LastGenOutput>
+      <DependentUpon>QuanLyTiemNet.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\QuanLyTiemNet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyTiemNet.edmx</DependentUpon>
+      <LastGenOutput>QuanLyTiemNet.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

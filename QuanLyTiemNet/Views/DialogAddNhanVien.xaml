@@ -1,0 +1,135 @@
+﻿<Window x:Class="QuanLyTiemNet.Views.DialogAddNhanVien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thêm Nhân Sự Mới" Height="620" Width="480"
+        WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F8FAFC"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <Style x:Key="InputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#475569"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="ComboStyle" TargetType="Control">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#475569"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#0F172A" CornerRadius="16" BorderBrush="#3B82F6" BorderThickness="1.5"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <TextBlock Text="Thêm Nhân Sự Mới" FontSize="22" FontWeight="Bold" Foreground="#60A5FA"/>
+                <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                        Background="Transparent" BorderThickness="0" Foreground="#94A3B8" FontSize="20" 
+                        Cursor="Hand" Click="BtnHuy_Click"/>
+            </Grid>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="Họ tên đầy đủ" Style="{StaticResource LabelStyle}"/>
+                    <TextBox Text="{Binding NewNhanVien.HoTen, UpdateSourceTrigger=PropertyChanged}" 
+                             Style="{StaticResource InputStyle}" Margin="0,0,0,16"/>
+
+                    <TextBlock Text="Tài khoản liên kết" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox ItemsSource="{Binding ListTaiKhoan}" 
+                              SelectedValue="{Binding NewNhanVien.MaTaiKhoan}" 
+                              SelectedValuePath="MaTaiKhoan" DisplayMemberPath="TenDangNhap" 
+                              Style="{StaticResource ComboStyle}" VerticalContentAlignment="Center" Padding="8,0" Margin="0,0,0,16">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Padding" Value="5"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                    </ComboBox>
+
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Chức vụ" Style="{StaticResource LabelStyle}"/>
+                            <ComboBox SelectedValue="{Binding NewNhanVien.ChucVu}" SelectedValuePath="Content" Style="{StaticResource ComboStyle}" VerticalContentAlignment="Center" Padding="8,0">
+                                <ComboBoxItem Content="Quản lý kỹ thuật" Foreground="Black"/>
+                                <ComboBoxItem Content="Thu ngân" Foreground="Black"/>
+                                <ComboBoxItem Content="Bảo vệ" Foreground="Black"/>
+                                <ComboBoxItem Content="Phục vụ" Foreground="Black"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Số điện thoại" Style="{StaticResource LabelStyle}"/>
+                            <TextBox Text="{Binding NewNhanVien.SoDienThoai, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputStyle}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="Phân ca làm việc" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox SelectedValue="{Binding NewNhanVien.CaLamViec}" SelectedValuePath="Content" Style="{StaticResource ComboStyle}" VerticalContentAlignment="Center" Padding="8,0" Margin="0,0,0,16">
+                        <ComboBoxItem Content="Ca sáng (06:00 - 14:00)" Foreground="Black"/>
+                        <ComboBoxItem Content="Ca chiều (14:00 - 22:00)" Foreground="Black"/>
+                        <ComboBoxItem Content="Ca đêm (22:00 - 06:00)" Foreground="Black"/>
+                    </ComboBox>
+
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Mức lương (VND)" Style="{StaticResource LabelStyle}"/>
+                            <TextBox Text="{Binding NewNhanVien.MucLuong, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputStyle}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Ngày vào làm" Style="{StaticResource LabelStyle}"/>
+                            <DatePicker SelectedDate="{Binding NewNhanVien.NgayVaoLam}" Style="{StaticResource ComboStyle}" VerticalContentAlignment="Center" Padding="4,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="Trạng thái làm việc" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox SelectedValue="{Binding NewNhanVien.TrangThai}" SelectedValuePath="Content" Style="{StaticResource ComboStyle}" VerticalContentAlignment="Center" Padding="8,0" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Đang làm việc" Foreground="Black"/>
+                        <ComboBoxItem Content="Tạm nghỉ" Foreground="Black"/>
+                    </ComboBox>
+                </StackPanel>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="Hủy" Width="90" Height="40" Margin="0,0,12,0" 
+                        Background="#334155" Foreground="White" BorderThickness="0" Cursor="Hand" Click="BtnHuy_Click"/>
+
+                <Button Content="Lưu thông tin" Width="150" Height="40" 
+                        Background="#2563EB" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="BtnLuu_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
