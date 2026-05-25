@@ -33,11 +33,23 @@ namespace QuanLyTiemNet.Views
             {
                 using (var db = new QuanLyTiemNetEntities1())
                 {
+                    // 1. Cộng tiền cho Khách
                     var tkDb = db.TaiKhoans.FirstOrDefault(t => t.MaTaiKhoan == _maTaiKhoanCachNap);
                     if (tkDb != null)
                     {
                         tkDb.SoDu = (tkDb.SoDu ?? 0) + soTien;
-                        db.SaveChanges();
+
+                        // 2. GHI LẠI NHẬT KÝ GIAO DỊCH
+                        var nhatKy = new LichSuNapTien
+                        {
+                            MaTaiKhoanKhach = _maTaiKhoanCachNap,
+                            MaTaiKhoanNhanVien = PhienDangNhap.NhanVienHienTai.MaTaiKhoan,
+                            SoTienNap = soTien,
+                            ThoiGianNap = DateTime.Now
+                        };
+                        db.LichSuNapTiens.Add(nhatKy);
+
+                        db.SaveChanges(); // Lưu cả 2 hành động vào SQL cùng lúc
                     }
                 }
                 MessageBox.Show($"Nạp thành công {soTien:N0} VNĐ!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -49,5 +61,16 @@ namespace QuanLyTiemNet.Views
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+
+        private void BtnCombo_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is System.Windows.Controls.Button btnClicked && btnClicked.Tag != null)
+            {
+                txtSoTienNap.Text = btnClicked.Tag.ToString();
+                txtSoTienNap.Focus();
+                txtSoTienNap.SelectAll();
+            }
+        }
+
     }
 }

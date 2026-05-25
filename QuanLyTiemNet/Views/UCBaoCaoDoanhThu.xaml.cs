@@ -12,18 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using QuanLyTiemNet.ViewModels;
+
 namespace QuanLyTiemNet.Views
 {
     /// <summary>
-    /// Interaction logic for UCCanTin.xaml
+    /// Interaction logic for UCBaoCaoDoanhThu.xaml
     /// </summary>
-    public partial class UCCanTin : UserControl
+    public partial class UCBaoCaoDoanhThu : UserControl
     {
-        public UCCanTin()
+        public UCBaoCaoDoanhThu()
         {
             InitializeComponent();
-            this.DataContext = new CangTinViewModel();
         }
     }
 }

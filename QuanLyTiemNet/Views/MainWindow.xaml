@@ -21,6 +21,12 @@
         <DataTemplate DataType="{x:Type vm:HoiVienViewModel}">
             <v:UCHoiVien />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NhatKyGiaoDichViewModel}">
+            <v:UCNhatKy />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BaoCaoDoanhThuViewModel}">
+            <v:UCBaoCaoDoanhThu />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -55,8 +61,8 @@
                     <RadioButton Content="👔 Quản lý nhân viên" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="NhanVien" Visibility="{Binding HienThiAdmin}"/>
                     <RadioButton Content="👥 Quản lý hội viên" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="HoiVien"/>
                     <RadioButton Content="🍔 Căng tin &amp; Đơn hàng" Style="{StaticResource MenuButtonStyle}" GroupName="Menu" Command="{Binding SwitchViewCommand}" CommandParameter="CangTin"/>
-                    <RadioButton Content="🕒 Nhật ký giao dịch" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"/>
-                    <RadioButton Content="📊 Báo cáo doanh thu" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"/>
+                    <RadioButton Content="🕒 Nhật ký giao dịch" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"  Command="{Binding SwitchViewCommand}" CommandParameter="NhatKy"/>
+                    <RadioButton Content="📊 Báo cáo doanh thu" Style="{StaticResource MenuButtonStyle}" GroupName="Menu"  Command="{Binding SwitchViewCommand}" CommandParameter="BaoCao"/>
                 </StackPanel>
 
                 <TextBlock Grid.Row="2" Text="23/05/2026 13:18:03" Foreground="{StaticResource TextMuted}" FontFamily="Consolas" TextAlignment="Center" />

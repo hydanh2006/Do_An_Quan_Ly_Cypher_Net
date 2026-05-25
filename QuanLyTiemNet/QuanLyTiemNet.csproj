@@ -69,10 +69,12 @@
     <Compile Include="Models\DichVu.cs">
       <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DichVuExtention.cs" />
     <Compile Include="Models\HoiVienExtention.cs" />
     <Compile Include="Models\LichSuNapTien.cs">
       <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LichSuNapTienExtension.cs" />
     <Compile Include="Models\MayTram.cs">
       <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
     </Compile>
@@ -103,6 +105,7 @@
     <Compile Include="Models\TaiKhoan.cs">
       <DependentUpon>QuanLyTiemNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BaoCaoDoanhThuViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CangTinViewModel.cs" />
     <Compile Include="ViewModels\HoiVienViewModel.cs" />
@@ -110,12 +113,19 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MayTramViewModel.cs" />
     <Compile Include="ViewModels\NhanVienViewModel.cs" />
+    <Compile Include="ViewModels\NhatKyGiaoDichViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\DialogAddDichVu.xaml.cs">
+      <DependentUpon>DialogAddDichVu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DialogAddNhanVien.xaml.cs">
       <DependentUpon>DialogAddNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogDKHoiVien.xaml.cs">
       <DependentUpon>DialogDKHoiVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogEditDichVu.xaml.cs">
+      <DependentUpon>DialogEditDichVu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DialogEditNhanVien.xaml.cs">
       <DependentUpon>DialogEditNhanVien.xaml</DependentUpon>
@@ -128,6 +138,9 @@
     </Compile>
     <Compile Include="Views\UCBaoCao.xaml.cs">
       <DependentUpon>UCBaoCao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCBaoCaoDoanhThu.xaml.cs">
+      <DependentUpon>UCBaoCaoDoanhThu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UCCanTin.xaml.cs">
       <DependentUpon>UCCanTin.xaml</DependentUpon>
@@ -144,11 +157,19 @@
     <Compile Include="Views\UCNhatKy.xaml.cs">
       <DependentUpon>UCNhatKy.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DialogAddDichVu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DialogAddNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DialogDKHoiVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogEditDichVu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +205,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\UCBaoCao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCBaoCaoDoanhThu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

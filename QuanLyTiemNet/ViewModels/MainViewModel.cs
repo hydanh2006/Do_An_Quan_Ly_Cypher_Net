@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,8 +23,9 @@ namespace QuanLyTiemNet.ViewModels
         public MayTramViewModel MayTramVM { get; set; }
         public NhanVienViewModel NhanVienVM { get; set; }
         public CangTinViewModel CangTinVM { get; set; }
-
         public HoiVienViewModel HoiVienVM { get; set; }
+        public NhatKyGiaoDichViewModel NhatKyVM { get; set; }
+        public BaoCaoDoanhThuViewModel BaoCaoVM { get; set; }
 
         public ICommand SwitchViewCommand { get; set; }
 
@@ -45,6 +47,8 @@ namespace QuanLyTiemNet.ViewModels
             NhanVienVM = new NhanVienViewModel();
             CangTinVM = new CangTinViewModel();
             HoiVienVM = new HoiVienViewModel();
+            NhatKyVM = new NhatKyGiaoDichViewModel();
+            BaoCaoVM = new BaoCaoDoanhThuViewModel();
 
             // Màn hình mặc định khi vừa mở App lên là Sơ đồ máy trạm
             CurrentView = MayTramVM;
@@ -67,6 +71,12 @@ namespace QuanLyTiemNet.ViewModels
                         break;
                     case "HoiVien":
                         CurrentView = HoiVienVM;
+                        break;
+                    case "NhatKy":
+                        CurrentView = NhatKyVM;
+                        break;
+                    case "BaoCao":             
+                        CurrentView = BaoCaoVM;
                         break;
                 }
             });

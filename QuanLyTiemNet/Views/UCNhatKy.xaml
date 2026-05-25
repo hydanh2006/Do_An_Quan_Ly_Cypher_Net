@@ -2,14 +2,94 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="Transparent">
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="NHẬT KÝ GIAO DỊCH" FontSize="24" FontWeight="Bold" Foreground="{StaticResource AccentBlue}" Margin="0,0,0,5"/>
-            <TextBlock Text="Lịch sử thu tiền máy, nạp thẻ và bán dịch vụ." Foreground="{StaticResource TextMuted}" Margin="0,0,0,20"/>
 
-            <Border Background="{StaticResource BgCard}" Height="500" CornerRadius="12" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
-                <TextBlock Text="Bảng dữ liệu nhật ký sẽ được Load tại đây" Foreground="{StaticResource TextMuted}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-        </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="NHẬT KÝ GIAO DỊCH" FontSize="24" FontWeight="Bold" Foreground="#8B5CF6"/>
+                <TextBlock Text="Tra cứu lịch sử nạp tiền của hội viên." Foreground="#94a3b8" FontSize="13" Margin="0,4,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Lọc theo ngày:" Foreground="#94a3b8" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                <DatePicker SelectedDate="{Binding NgayLoc}" Width="150" Height="38" Background="#1E293B" Foreground="Black" Padding="5"/>
+
+                <Button Height="38" Padding="15,0" Background="#3B82F6" Foreground="White" BorderThickness="0" Margin="10,0,0,0" 
+                        Cursor="Hand" Command="{Binding RefreshCommand}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🔄" FontSize="14" Foreground="White" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                        <TextBlock Text="Làm mới" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding DanhSachGiaoDich}" AutoGenerateColumns="False" 
+                  Background="Transparent" BorderThickness="0" CanUserAddRows="False" RowHeaderWidth="0"
+                  GridLinesVisibility="None" SelectionMode="Single">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#6B7280"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Padding" Value="12,15"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="BorderBrush" Value="#1F2937"/>
+                </Style>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="BorderBrush" Value="#1F2937"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="STT" Binding="{Binding STT}" Width="60"/>
+                <DataGridTextColumn Header="MÃ GIAO DỊCH" Binding="{Binding MaGiaoDich}" Width="150"/>
+
+                <DataGridTemplateColumn Header="KHÁCH HÀNG (NGƯỜI NHẬN)" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TaiKhoan.TenDangNhap}" Foreground="#3B82F6" FontWeight="SemiBold"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="NHÂN VIÊN (NGƯỜI NẠP)" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TaiKhoan1.TenDangNhap}" Foreground="#F59E0B"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="SỐ TIỀN NẠP" Width="1.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SoTienNapString}" Foreground="#10B981" FontWeight="Bold"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="THỜI GIAN" Binding="{Binding ThoiGianNapString}" Width="1.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

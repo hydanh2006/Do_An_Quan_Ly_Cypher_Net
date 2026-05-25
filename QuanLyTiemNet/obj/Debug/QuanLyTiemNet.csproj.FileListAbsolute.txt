@@ -77,6 +77,12 @@ D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\UCHoiVien.baml
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogDKHoiVien.g.cs
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\UCHoiVien.g.cs
-D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\QuanLyTiemNet.exe.config
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogNapTien.baml
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogNapTien.g.cs
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogAddDichVu.baml
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogEditDichVu.baml
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogAddDichVu.g.cs
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\DialogEditDichVu.g.cs
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\UCBaoCaoDoanhThu.baml
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\Views\UCBaoCaoDoanhThu.g.cs
+D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\obj\Debug\QuanLyTiemNet.exe.config

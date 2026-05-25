@@ -1,0 +1,58 @@
+﻿<Window x:Class="QuanLyTiemNet.Views.DialogEditDichVu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cập Nhật Dịch Vụ" Height="450" Width="400"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Background="#0d1527" CornerRadius="16" BorderBrush="#10B981" BorderThickness="1.5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,16">
+                <TextBlock Text="Cập Nhật Dịch Vụ" FontSize="20" FontWeight="Black" Foreground="#10B981"/>
+                <Button Content="✕" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" 
+                        Foreground="#475569" FontSize="16" Cursor="Hand" Click="BtnHuy_Click"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Tên món / Dịch vụ" Foreground="#94a3b8" Margin="0,0,0,6"/>
+                <TextBox Text="{Binding EditingDichVu.TenDichVu}" Height="38" Background="#1E293B" Foreground="White" BorderThickness="0" Padding="10,0" VerticalContentAlignment="Center" Margin="0,0,0,14"/>
+
+                <TextBlock Text="Phân loại" Foreground="#94a3b8" Margin="0,0,0,6"/>
+                <ComboBox SelectedValue="{Binding EditingDichVu.PhanLoai}" SelectedValuePath="Content" Height="38" Background="#1E293B" Foreground="Black" Padding="10,0" VerticalContentAlignment="Center" Margin="0,0,0,14">
+                    <ComboBoxItem Content="Đồ ăn"/>
+                    <ComboBoxItem Content="Nước uống"/>
+                    <ComboBoxItem Content="Thẻ cào"/>
+                </ComboBox>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Đơn giá (VNĐ)" Foreground="#94a3b8" Margin="0,0,0,6"/>
+                        <TextBox Text="{Binding EditingDichVu.DonGia}" Height="38" Background="#1E293B" Foreground="White" BorderThickness="0" Padding="10,0" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Tồn kho" Foreground="#94a3b8" Margin="0,0,0,6"/>
+                        <TextBox Text="{Binding EditingDichVu.TonKho}" Height="38" Background="#1E293B" Foreground="White" BorderThickness="0" Padding="10,0" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="Hủy" Width="70" Height="36" Background="#1e293b" Foreground="#94a3b8" BorderThickness="0" Margin="0,0,12,0" Cursor="Hand" Click="BtnHuy_Click"/>
+                <Button Content="Lưu Thay Đổi" Width="120" Height="36" Background="#10B981" Foreground="White" BorderThickness="0" FontWeight="Bold" Cursor="Hand" Click="BtnLuu_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

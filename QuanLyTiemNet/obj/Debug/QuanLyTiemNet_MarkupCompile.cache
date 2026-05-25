@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Dawn-Dev\dotNET\doan\QuanLyTiemNet\DoAnQuanLyTiemNet\QuanLyTiemNet\App.xaml
-13-1538062718
+16-993762105
 2-597767337
-402090235053
+47811125420
 181857537648
-Views\DialogAddNhanVien.xaml;Views\DialogDKHoiVien.xaml;Views\DialogEditNhanVien.xaml;Views\DialogKhoiDong.xaml;Views\DialogNapTien.xaml;Views\LoginWindowView.xaml;Views\MainWindow.xaml;Views\UCBaoCao.xaml;Views\UCCanTin.xaml;Views\UCHoiVien.xaml;Views\UCMayTram.xaml;Views\UCNhanVien.xaml;Views\UCNhatKy.xaml;
+Views\DialogAddDichVu.xaml;Views\DialogAddNhanVien.xaml;Views\DialogDKHoiVien.xaml;Views\DialogEditDichVu.xaml;Views\DialogEditNhanVien.xaml;Views\DialogKhoiDong.xaml;Views\DialogNapTien.xaml;Views\LoginWindowView.xaml;Views\MainWindow.xaml;Views\UCBaoCao.xaml;Views\UCBaoCaoDoanhThu.xaml;Views\UCCanTin.xaml;Views\UCHoiVien.xaml;Views\UCMayTram.xaml;Views\UCNhanVien.xaml;Views\UCNhatKy.xaml;
 
 False
 
