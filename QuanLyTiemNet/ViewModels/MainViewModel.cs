@@ -28,6 +28,7 @@ namespace QuanLyTiemNet.ViewModels
         public BaoCaoDoanhThuViewModel BaoCaoVM { get; set; }
 
         public ICommand SwitchViewCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
 
         public System.Windows.Visibility HienThiAdmin
         {
@@ -80,6 +81,25 @@ namespace QuanLyTiemNet.ViewModels
                         break;
                 }
             });
+
+            LogoutCommand = new RelayCommand((p) =>
+            {
+                var currentWindow = p as System.Windows.Window;
+                if (currentWindow != null)
+                {
+                    var result = System.Windows.MessageBox.Show("Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?", "Đăng xuất", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+                    if (result == System.Windows.MessageBoxResult.Yes)
+                    {
+                        Models.PhienDangNhap.NhanVienHienTai = null;
+
+                        var loginwindow = new Views.LoginWindowView();
+                        loginwindow.Show();
+
+                        currentWindow.Close();
+                    }
+                }
+            });
+
         }
     }
 }
