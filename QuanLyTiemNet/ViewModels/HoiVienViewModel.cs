@@ -20,6 +20,7 @@ namespace QuanLyTiemNet.ViewModels
         public ICommand NapTienCommand { get; set; }
         public ICommand SuaHoiVienCommand { get; set; }
         public ICommand XoaHoiVienCommand { get; set; }
+        public ICommand InTongBillNgayCommand { get; set; }
 
         public HoiVienViewModel()
         {
@@ -71,6 +72,36 @@ namespace QuanLyTiemNet.ViewModels
             {
                 MessageBox.Show("Bạn có thể copy form Thêm Hội Viên để làm form Sửa tương tự như cách làm ở Tab Nhân Sự nhé!", "Hướng dẫn");
             });
+
+            InTongBillNgayCommand = new RelayCommand((p) =>
+            {
+                if (p is TaiKhoan khachHangDaChon)
+                {
+                    using (var db = new QuanLyTiemNetEntities1())
+                    {
+                        DateTime ngayHomNay = DateTime.Now.Date;
+                        DateTime ngayMai = ngayHomNay.AddDays(1);
+
+                        var dsGiaoDichTrongNgay = db.LichSuNapTiens
+                            .Include("TaiKhoan1")
+                            .Where(x => x.MaTaiKhoanKhach == khachHangDaChon.MaTaiKhoan
+                                     && x.ThoiGianNap >= ngayHomNay
+                                     && x.ThoiGianNap < ngayMai)
+                            .OrderBy(x => x.ThoiGianNap)
+                            .ToList();
+
+                        if (dsGiaoDichTrongNgay.Count == 0)
+                        {
+                            MessageBox.Show($"Hôm nay hội viên [{khachHangDaChon.TenDangNhap}] không có giao dịch nào để in!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                            return;
+                        }
+
+                        var dialog = new Views.DialogInHoaDonTong(khachHangDaChon, dsGiaoDichTrongNgay);
+                        dialog.ShowDialog();
+                    }
+                }
+            });
+
         }
 
         public void LoadDanhSachHoiVien()

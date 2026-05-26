@@ -130,6 +130,12 @@
     <Compile Include="Views\DialogEditNhanVien.xaml.cs">
       <DependentUpon>DialogEditNhanVien.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DialogInHoaDon.xaml.cs">
+      <DependentUpon>DialogInHoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogInHoaDonTong.xaml.cs">
+      <DependentUpon>DialogInHoaDonTong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DialogKhoiDong.xaml.cs">
       <DependentUpon>DialogKhoiDong.xaml</DependentUpon>
     </Compile>
@@ -174,6 +180,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DialogEditNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogInHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogInHoaDonTong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

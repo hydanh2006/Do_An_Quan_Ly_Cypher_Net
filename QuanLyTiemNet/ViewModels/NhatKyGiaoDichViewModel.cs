@@ -30,6 +30,7 @@ namespace QuanLyTiemNet.ViewModels
         }
 
         public ICommand RefreshCommand { get; set; }
+        public ICommand InHoaDonCommand { get; set; }
 
         public NhatKyGiaoDichViewModel()
         {
@@ -39,6 +40,15 @@ namespace QuanLyTiemNet.ViewModels
             {
                 NgayLoc = null;
                 LoadNhatKy();
+            });
+
+            InHoaDonCommand = new RelayCommand((p) =>
+            {
+                if (p is LichSuNapTien giaoDichDaChon)
+                {   
+                    var dialog = new Views.DialogInHoaDon(giaoDichDaChon);
+                    dialog.ShowDialog();
+                }
             });
         }
 

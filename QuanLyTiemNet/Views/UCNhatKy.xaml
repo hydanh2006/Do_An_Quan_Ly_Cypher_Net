@@ -89,6 +89,23 @@
                 </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="THỜI GIAN" Binding="{Binding ThoiGianNapString}" Width="1.5*"/>
+
+                <DataGridTemplateColumn Header="THAO TÁC" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="🖨️ In Bill" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" Padding="8,4"
+                                    Command="{Binding DataContext.InHoaDonCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="4"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="THỜI GIAN" Binding="{Binding ThoiGianNapString}" Width="1.5*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

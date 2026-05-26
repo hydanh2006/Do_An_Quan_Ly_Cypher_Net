@@ -15,6 +15,7 @@ namespace QuanLyTiemNet.ViewModels
             get => _danhSachNhanVien;
             set { _danhSachNhanVien = value; OnPropertyChanged(nameof(DanhSachNhanVien)); }
         }
+
         public Visibility HienThiAdmin
         {
             get => (PhienDangNhap.NhanVienHienTai != null && PhienDangNhap.NhanVienHienTai.VaiTro == 0)

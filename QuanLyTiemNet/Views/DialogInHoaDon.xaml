@@ -1,0 +1,57 @@
+﻿<Window x:Class="QuanLyTiemNet.Views.DialogInHoaDon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="In Hóa Đơn" Height="540" Width="400"
+        WindowStartupLocation="CenterScreen" Background="#F1F5F9" WindowStyle="ToolWindow">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="KhuVucIn" Grid.Row="0" Background="White" Padding="20" BorderBrush="#CBD5E1" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="CYBER NETPRO" FontSize="22" FontWeight="Black" HorizontalAlignment="Center"/>
+                <TextBlock Text="Đ/C: Lê Trọng Tấn, P.Tây Thạnh, TP. HCM" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <TextBlock Text="SĐT: 0818916660" FontSize="12" HorizontalAlignment="Center"/>
+
+                <TextBlock Text="----------------------------------------" HorizontalAlignment="Center" Margin="0,15" Foreground="Gray"/>
+                <TextBlock Text="HÓA ĐƠN THANH TOÁN" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <Grid Margin="0,0,0,8">
+                    <TextBlock Text="Mã GD:" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding MaGiaoDich}" FontWeight="Bold" HorizontalAlignment="Right"/>
+                </Grid>
+                <Grid Margin="0,0,0,8">
+                    <TextBlock Text="Ngày in:" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding ThoiGianNapString}" HorizontalAlignment="Right"/>
+                </Grid>
+                <Grid Margin="0,0,0,8">
+                    <TextBlock Text="Thu ngân:" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding TaiKhoan1.TenDangNhap}" HorizontalAlignment="Right"/>
+                </Grid>
+                <Grid Margin="0,0,0,15">
+                    <TextBlock Text="Tài khoản nạp:" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding TaiKhoan.TenDangNhap}" FontWeight="Bold" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <TextBlock Text="----------------------------------------" HorizontalAlignment="Center" Margin="0,0,0,15" Foreground="Gray"/>
+
+                <Grid>
+                    <TextBlock Text="SỐ TIỀN THU:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding SoTienNapString}" FontSize="18" FontWeight="Black" Foreground="Black" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <TextBlock Text="----------------------------------------" HorizontalAlignment="Center" Margin="0,15,0,15" Foreground="Gray"/>
+                <TextBlock Text="Cảm ơn quý khách và hẹn gặp lại!" FontSize="12" FontStyle="Italic" HorizontalAlignment="Center"/>
+                <TextBlock Text="Wifi: CyberNet_VIP / Pass: 88888888" FontSize="11" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+            <Button Content="Hủy bỏ" Width="90" Height="35" Margin="0,0,10,0" Background="#94A3B8" Foreground="White" BorderThickness="0" Cursor="Hand" Click="BtnHuy_Click"/>
+            <Button Content="🖨️ XÁC NHẬN IN BẤM VÀO ĐÂY" Width="200" Height="35" Background="#3B82F6" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="BtnIn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

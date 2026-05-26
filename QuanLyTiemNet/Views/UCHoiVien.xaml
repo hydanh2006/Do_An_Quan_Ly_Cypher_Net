@@ -75,12 +75,12 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="THAO TÁC" Width="200">
+                <DataGridTemplateColumn Header="THAO TÁC" Width="280">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Nạp tiền" Background="#F59E0B" Foreground="White" BorderThickness="0" Margin="0,0,15,0" Cursor="Hand" Padding="8,4"
-                                        Command="{Binding DataContext.NapTienCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}">
+                                <Button Content="Nạp tiền" Background="#F59E0B" Foreground="White" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand" Padding="8,4"
+                                        Command="{Binding DataContext.NapTienCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="4"/>
@@ -88,11 +88,19 @@
                                     </Button.Resources>
                                 </Button>
 
-                                <Button Content="Sửa" Background="Transparent" Foreground="#10B981" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand"
-                                        Command="{Binding DataContext.SuaHoiVienCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                                <Button Content="🖨️ Bill Ngày" Background="#8B5CF6" Foreground="White" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand" Padding="8,4"
+                                        Command="{Binding DataContext.InTongBillNgayCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
 
+                                <Button Content="Sửa" Background="Transparent" Foreground="#10B981" BorderThickness="0" Margin="0,0,8,0" Cursor="Hand"
+                                        Command="{Binding DataContext.SuaHoiVienCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
                                 <Button Content="Xóa" Background="Transparent" Foreground="#EF4444" BorderThickness="0" Cursor="Hand"
-                                        Command="{Binding DataContext.XoaHoiVienCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                                        Command="{Binding DataContext.XoaHoiVienCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
