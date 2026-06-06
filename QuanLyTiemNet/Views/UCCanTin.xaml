@@ -132,18 +132,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 
-                <DataGridTemplateColumn Header="THAO TÁC" Width="120" Visibility="{Binding DataContext.HienThiAdmin, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Sửa" Background="Transparent" Foreground="#3B82F6" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand"
-                                        Command="{Binding DataContext.SuaDichVuCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
-                                <Button Content="Xóa" Background="Transparent" Foreground="#EF4444" BorderThickness="0" Cursor="Hand"
-                                        Command="{Binding DataContext.XoaDichVuCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+              
             </DataGrid.Columns>
         </DataGrid>
 

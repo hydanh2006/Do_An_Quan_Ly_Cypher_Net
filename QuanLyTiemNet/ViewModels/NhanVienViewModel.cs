@@ -1,5 +1,6 @@
 ﻿using QuanLyTiemNet.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -9,11 +10,25 @@ namespace QuanLyTiemNet.ViewModels
 {
     internal class NhanVienViewModel : BaseViewModel
     {
+
+        private List<NhanVien> _danhSachNhanVienGoc;
         private ObservableCollection<NhanVien> _danhSachNhanVien;
         public ObservableCollection<NhanVien> DanhSachNhanVien
         {
             get => _danhSachNhanVien;
             set { _danhSachNhanVien = value; OnPropertyChanged(nameof(DanhSachNhanVien)); }
+        }
+
+        private string _tuKhoaTimKiem;
+        public string TuKhoaTimKiem
+        {
+            get => _tuKhoaTimKiem;
+            set
+            {
+                _tuKhoaTimKiem = value;
+                OnPropertyChanged(nameof(TuKhoaTimKiem));
+                ThucHienTimKiem();
+            }
         }
 
         public Visibility HienThiAdmin
@@ -97,6 +112,8 @@ namespace QuanLyTiemNet.ViewModels
                     {
                         nv.STT = stt++;
                     }
+                    _danhSachNhanVienGoc = listNV;
+                    ThucHienTimKiem();
 
                     DanhSachNhanVien = new ObservableCollection<NhanVien>(listNV);
                 }
@@ -104,6 +121,25 @@ namespace QuanLyTiemNet.ViewModels
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ThucHienTimKiem()
+        {
+            if (_danhSachNhanVienGoc == null) return;
+
+            if (string.IsNullOrWhiteSpace(TuKhoaTimKiem))
+            {
+                DanhSachNhanVien = new ObservableCollection<NhanVien>(_danhSachNhanVienGoc);
+            }
+            else
+            {
+                string tuKhoa = TuKhoaTimKiem.ToLower().Trim();
+                var ketQua = _danhSachNhanVienGoc.Where(x =>
+                    x.HoTen != null &&
+                    x.HoTen.ToLower().Contains(tuKhoa)).ToList();
+
+                DanhSachNhanVien = new ObservableCollection<NhanVien>(ketQua);
             }
         }
     }

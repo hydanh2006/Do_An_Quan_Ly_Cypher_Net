@@ -13,6 +13,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
@@ -20,9 +21,30 @@
                 <TextBlock Text="Quản lý thông tin, phân ca và lương nhân viên tiệm Net." Foreground="#94a3b8" FontSize="13" Margin="0,4,0,0"/>
             </StackPanel>
 
-            <Button Grid.Column="1" Height="40" Padding="15,0" Background="#3b82f6" BorderThickness="0" 
-                    Visibility="{Binding HienThiAdmin}"
-                    Command="{Binding AddNhanVienCommand}">
+            <Border Grid.Column="1" Background="#1E293B" CornerRadius="8" Margin="0,0,15,0" Width="280" Height="40">
+                <Grid>
+                    <TextBlock Text="🔍 Tìm kiếm theo tên nhân viên..." Foreground="#64748B" VerticalAlignment="Center" Margin="10,0,0,0" IsHitTestVisible="False">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text.Length, ElementName=txtTimKiem}" Value="0">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBox x:Name="txtTimKiem" Background="Transparent" Foreground="White" BorderThickness="0" 
+                     VerticalContentAlignment="Center" Padding="10,0,10,0" FontSize="14"
+                     Text="{Binding TuKhoaTimKiem, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </Border>
+
+            <Button Grid.Column="2" Height="40" Padding="15,0" Background="#3b82f6" BorderThickness="0" 
+            Visibility="{Binding HienThiAdmin}"
+            Command="{Binding AddNhanVienCommand}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="8"/>
